@@ -1,0 +1,54 @@
+
+
+
+import React, { useState, useEffect } from "react";
+import ExpenseItem from "./ExpenseItem";
+import './ExpensesList.css';
+
+const ExpensesList = ({ userId }) => {
+  const [expenses, setExpenses] = useState([]);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchExpenses = async () => {
+      try {
+        const response = await fetch(`http://localhost:3001/account?user_id=${userId}`);
+       
+        if (!response.ok) {
+          throw new Error('Failed to fetch expenses.');
+        }
+        const data = await response.json();
+        console.log('Data', data);
+        setExpenses(data.expenses.rows);
+        setError(null);
+      } catch (error) {
+        setError(error.message);
+      }
+    };
+   
+    
+      fetchExpenses();
+      const intervalId= setInterval(fetchExpenses, 1000);
+      return () => clearInterval(intervalId);
+    }, [userId]);
+
+  if (error) {
+    return <h2 className="expenses-list__fallback">Error: {error}</h2>;
+  }
+
+  if (expenses.length === 0) {
+    return <h2 className="expenses-list__fallback">Found no expenses.</h2>;
+  }
+    return (
+    <ul className="expenses-list">
+      {expenses.map((expense) => (
+        <ExpenseItem
+          key={expense.id}
+          expense={expense}
+        />
+      ))}
+    </ul>
+  );
+};
+
+export default ExpensesList;
