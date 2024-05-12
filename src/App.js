@@ -50,7 +50,7 @@ const App = () => {
       <Routes>
       <Route path='/' element={<Navigate to='/login'/>} />
       <Route path='/login' element={<LoginForm onLogin={handleLogin}/>}/>
-      <Route path='/login' element={<Signup/>}/>
+      <Route path='/signup' element={<Signup/>}/>
       <Route
         path='/account'
         element={

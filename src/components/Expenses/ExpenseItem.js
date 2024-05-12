@@ -19,7 +19,7 @@ const ExpenseItem = ( { expense } ) => {
       <Card className='expense-item'>
         <div className='row align-items-center'>
           <div className='col-5 col-sm-4'>
-            <ExpenseDate date={expense.date} />
+            <ExpenseDate date={new Date(expense.date)} />
           </div>
           <div className='col-7 col-sm-8'>
             <div className='expense-item__description'>

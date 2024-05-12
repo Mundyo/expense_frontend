@@ -7,7 +7,7 @@ import ExpensesChart from './ExpensesChart';
 import './Expenses.css';
 
 const Expenses = (props) => {
-  const [filteredYear, setFilteredYear] = useState('2020');
+  const [filteredYear, setFilteredYear] = useState('2024');
   const userId = parseInt(localStorage.getItem('user_id'), 10) || null;
   const [expenses, setExpenses] = useState([]);
 
@@ -18,7 +18,8 @@ const Expenses = (props) => {
   };
 
   const filteredExpenses = props.items.filter((expense) => {
-    return expense.date.getFullYear().toString() === filteredYear;
+    const expenseDate = new Date(expense.date);
+    return expenseDate.getFullYear().toString() === filteredYear;
   });
 
   return (
@@ -29,7 +30,13 @@ const Expenses = (props) => {
           onChangeFilter={filterChangeHandler}
         />
         <ExpensesChart expenses={filteredExpenses}  />
-        <ExpensesList items={filteredExpenses} userId={userId} expenses={expenses} setExpenses={setExpenses}/>
+        <ExpensesList 
+        items={filteredExpenses} 
+        userId={userId}
+         expenses={expenses} 
+         setExpenses={setExpenses} 
+         filteredYear={filteredYear}
+         />
       </Card>
     </div>
   );

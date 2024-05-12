@@ -5,14 +5,15 @@ import React, { useState, useEffect } from "react";
 import ExpenseItem from "./ExpenseItem";
 import './ExpensesList.css';
 
-const ExpensesList = ({ userId }) => {
+const ExpensesList = ({ userId, filteredYear }) => {
   const [expenses, setExpenses] = useState([]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchExpenses = async () => {
       try {
-        const response = await fetch(`http://localhost:3001/account?user_id=${userId}`);
+        // const response = await fetch(`http://localhost:3001/account?user_id=${userId}`);
+        const response = await fetch(`https://expense-backend-f7e811c7173d.herokuapp.com/account?user_id=${userId}`);
        
         if (!response.ok) {
           throw new Error('Failed to fetch expenses.');
@@ -39,9 +40,17 @@ const ExpensesList = ({ userId }) => {
   if (expenses.length === 0) {
     return <h2 className="expenses-list__fallback">Found no expenses.</h2>;
   }
+
+  console.log('Expenses:', expenses);
+
+  const filteredExpenses = expenses.filter(expense => {
+    const expenseYear = new Date(expense.date).getFullYear();
+    return expenseYear.toString() === filteredYear;
+  })
+
     return (
     <ul className="expenses-list">
-      {expenses.map((expense) => (
+      {filteredExpenses.map((expense) => (
         <ExpenseItem
           key={expense.id}
           expense={expense}
