@@ -36,7 +36,7 @@ const ExpensesList = ({ userId, filteredYear, onDeleteExpense }) => {
 
     const handleDeleteExpense = async (expenseId) => {
       try {
-        const response = await fetch(`https://expense-backend-f7e811c7173d.herokuapp.com/${expenseId}`, {
+        const response = await fetch(`https://expense-backend-f7e811c7173d.herokuapp.com/account/${expenseId}`, {
         // const response = await fetch(`http://localhost:3001/account/${expenseId}`, {
           method: 'DELETE',
         });
