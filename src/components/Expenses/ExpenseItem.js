@@ -18,6 +18,7 @@ const ExpenseItem = ( { expense, onDelete } ) => {
   }
 
   const priceClass = expense.price.toString().length > 3 ? 'expense-item__price small' : 'expense-item__price';
+  
 
   return (
     <li>
