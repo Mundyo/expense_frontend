@@ -17,6 +17,10 @@ const Expenses = (props) => {
     setFilteredYear(selectedYear);
   };
 
+  const deleteExpenseHandler = (expenseId) => {
+    setExpenses((prevExpenses) => prevExpenses.filter(expense => expense.id !== expenseId));
+  };
+
   const filteredExpenses = props.items.filter((expense) => {
     const expenseDate = new Date(expense.date);
     return expenseDate.getFullYear().toString() === filteredYear;
@@ -36,6 +40,7 @@ const Expenses = (props) => {
          expenses={expenses} 
          setExpenses={setExpenses} 
          filteredYear={filteredYear}
+         onDeleteExpense={deleteExpenseHandler}
          />
       </Card>
     </div>
