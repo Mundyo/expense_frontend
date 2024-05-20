@@ -57,12 +57,13 @@ function LoginForm( { onLogin }) {
       if (response.ok) {
         const userData = await response.json();
        
-        const { user_id } = userData;
+        const { user_id, username } = userData;
 
         localStorage.setItem('user_id', user_id);
+        localStorage.setItem('username', username);
 
         setUserId(user_id);
-        onLogin(user_id);
+        onLogin(user_id, username);
 
         
         console.log('Login successful!');

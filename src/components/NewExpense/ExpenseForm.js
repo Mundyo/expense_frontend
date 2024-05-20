@@ -49,9 +49,9 @@ const ExpenseForm = (props) => {
     try {
       console.log('userId before fetch:',  localStorage.getItem('user_id'));
 
-      const response = await fetch('https://expense-backend-f7e811c7173d.herokuapp.com/account', {
+      // const response = await fetch('https://expense-backend-f7e811c7173d.herokuapp.com/account', {
 
-      // const response = await fetch('http://localhost:3001/account', {
+      const response = await fetch('http://localhost:3001/account', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

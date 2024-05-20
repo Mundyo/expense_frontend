@@ -39,6 +39,7 @@
 
   @media(max-width: 680px){
     .new-expense{
-      width: 30rem;
+      width: 27rem;
+      margin-left:1.3rem;
     }
   }

@@ -6,6 +6,7 @@ import Expenses from './components/Expenses/Expenses';
 import Signup from './components/login/signup.jsx';
 import LoginForm from './components/login/loginform.jsx';
 import React, { useState, useEffect } from 'react';
+import Logout from './components/login/logout.jsx';
 
 
 const DUMMY_EXPENSES = [
@@ -32,6 +33,7 @@ const DUMMY_EXPENSES = [
 
 const App = () => {
   const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
+  const [username, setUsername] = useState(localStorage.getItem('username') || '');
 
     const saveExpenseDataHandler =(expense) => {
       setExpenses((prevExpenses) => {
@@ -40,6 +42,8 @@ const App = () => {
   };
   const handleLogin = (userId) => {
     console.log('User logged in with ID:', userId);
+    localStorage.setItem('username', username);
+    setUsername(username);
   
   }
 
@@ -55,7 +59,7 @@ const App = () => {
         path='/account'
         element={
           <>
-        
+            <Logout/>
             <NewExpense onSaveExpenseData={saveExpenseDataHandler}/>
             <Expenses items={expenses} />
           </>
@@ -64,7 +68,7 @@ const App = () => {
           const userId = new URLSearchParams(props.location.search).get('user_id');
           return userId ? (
           <>
-         
+            <div className='signin'> welcome, </div>
             <NewExpense onSaveExpenseData={saveExpenseDataHandler}/>
             <Expenses items={expenses} /> 
           </>

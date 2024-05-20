@@ -3,6 +3,7 @@
     padding: 0.5rem;
     margin: 1rem 0;
     background-color: #4b4b4b;
+    
   }
   
   .expense-item__description {
@@ -54,6 +55,9 @@
     -o-border-radius: 10px  ;
 }
   @media (min-width: 580px) {
+    .expense-item {
+      
+    }
     .expense-item__description {
       display: flex;
       flex-direction: row;
@@ -67,14 +71,9 @@
       font-size: 1.25rem;
       margin: 0;
     }
-  
-    .expense-item__price {
-      /* width:3rem !important; */
-     
 
-    }
     .delete-button{
-      background-color: brown;
+      background-color: rgba(165, 42, 42, 0.737);
       border:1px solid white;
       font-size:0.8rem;
       width:3.5rem;

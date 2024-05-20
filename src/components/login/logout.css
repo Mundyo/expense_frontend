@@ -1,0 +1,69 @@
+.col img{
+    width:2rem;
+    height:2rem;
+    margin-top:0.5rem;
+    margin-left:1rem;
+}
+
+
+
+.image-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .card-image {
+    cursor: pointer;
+  }
+  .username {
+    font-size:1rem;
+    color:white;
+  }
+  
+  .dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-left:1rem;
+    margin-bottom: 1rem;
+    background-color:  #ddb3f8;
+    max-width:20rem;
+    width:6rem;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius:10px;
+    -webkit-border-radius:10px;
+    -moz-border-radius:10px;
+    -ms-border-radius:10px;
+    -o-border-radius:10px;
+}
+  
+  .dropdown ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .dropdown li {
+    padding: 8px 16px;
+    cursor: pointer;
+  }
+  
+  .dropdown li:hover {
+    background-color: #ddd;
+    border-radius:10px;
+  }
+  @media (min-width:680px) {
+    /* .dropdown {
+        width: 5rem; 
+      } */
+    
+      .dropdown ul {
+        width: 100%; /* Ensure the ul takes the full width of the dropdown */
+      }
+    
+      .dropdown li {
+        width: 100%; /* Ensure the li elements take the full width of the dropdown */
+      }
+  }
+  
