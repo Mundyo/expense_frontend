@@ -39,7 +39,7 @@ const ExpenseForm = (props) => {
 
     const localDate = new Date(enteredDate);
     const utcDate = new Date(Date.UTC(localDate.getFullYear(), localDate.getMonth(), localDate.getDate()));
-    // const utcDate = new Date(localDate.getTime() + localDate.getTimezoneOffset() * 60000);
+   
 
     const expenseData = {
       title: enteredTitle,
