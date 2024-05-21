@@ -38,14 +38,14 @@ const ExpenseForm = (props) => {
     event.preventDefault();
 
     const localDate = new Date(enteredDate);
-    const utcDate = new Date(Date.UTC(localDate.getFullYear(), localDate.getMonth(), localDate.getDate(), 0,0,0));
+    const utcDate = new Date(Date.UTC(localDate.getFullYear(), localDate.getMonth(), localDate.getDate()));
     // const utcDate = new Date(localDate.getTime() + localDate.getTimezoneOffset() * 60000);
 
     const expenseData = {
       title: enteredTitle,
       amount: enteredAmount,
       // date: new Date(enteredDate),
-      date: utcDate,
+      date: utcDate.toISOString(),
       user_id:  localStorage.getItem('user_id'),
     };
 
