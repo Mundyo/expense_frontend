@@ -37,12 +37,15 @@ const ExpenseForm = (props) => {
   const submitHandler = async (event) => {
     event.preventDefault();
 
+    const localDate = new Date(enteredDate);
+    const utcDate = new Date(Date.UTC(localDate.getFullYear(), localDate.getMonth(), localDate.getDate()));
   
 
     const expenseData = {
       title: enteredTitle,
       amount: enteredAmount,
-      date: new Date(enteredDate),
+      // date: new Date(enteredDate),
+      date: utcDate,
       user_id:  localStorage.getItem('user_id'),
     };
 
