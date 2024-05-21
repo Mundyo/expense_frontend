@@ -38,7 +38,7 @@ const ExpenseForm = (props) => {
     event.preventDefault();
 
     const localDate = new Date(enteredDate);
-    localDate.setDate(localDate.getDate() +2);
+    localDate.setDate(localDate.getDate() +1);
 
     const adjustedDateISOString = localDate.toISOString();
   
