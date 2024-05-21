@@ -20,14 +20,11 @@ const ExpensesChart = (props) => {
   ];
 
   for (const expense of props.expenses) {
-      if(!(expense.date instanceof Date)) {
-        console.error('Invalid date format:', expense.date);
-        continue;
-      }
-
-    const expenseMonth = expense.date.getMonth(); 
+    const expenseDate = new Date(expense.date);  
+    const expenseMonth = expenseDate.getMonth(); 
     chartDataPoints[expenseMonth].value += expense.amount;
   }
+  console.log('ChartDataPoints:', chartDataPoints);
 
   return <Chart dataPoints={chartDataPoints} />;
 };
