@@ -38,19 +38,24 @@ const ExpenseForm = (props) => {
     event.preventDefault();
 
     const localDate = new Date(enteredDate);
-  
-    const adjustedDate = new Date(localDate);
-  adjustedDate.setDate(adjustedDate.getDate() + 2);
+    localDate.setDate(localDate.getDate() +2);
 
-  const utcDate = new Date(Date.UTC(adjustedDate.getFullYear(), localDate.getMonth(), localDate.getDate()));
+    const adjustedDateISOString = localDate.toISOString();
+  
+  //   const adjustedDate = new Date(localDate);
+  // adjustedDate.setDate(adjustedDate.getDate() + 2);
+
+  // const utcDate = new Date(Date.UTC(adjustedDate.getFullYear(), localDate.getMonth(), localDate.getDate()));
 
     const expenseData = {
       title: enteredTitle,
       amount: enteredAmount,
       // date: new Date(enteredDate),
-      date: utcDate.toISOString(),
+      date: adjustedDateISOString,
       user_id:  localStorage.getItem('user_id'),
     };
+
+    
 
     try {
       console.log('userId before fetch:',  localStorage.getItem('user_id'));
