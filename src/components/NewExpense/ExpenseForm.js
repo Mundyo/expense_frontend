@@ -38,8 +38,11 @@ const ExpenseForm = (props) => {
     event.preventDefault();
 
     const localDate = new Date(enteredDate);
-    const utcDate = new Date(Date.UTC(localDate.getFullYear(), localDate.getMonth(), localDate.getDate()));
-   
+  
+    const adjustedDate = new Date(localDate);
+  adjustedDate.setDate(adjustedDate.getDate() + 2);
+
+  const utcDate = new Date(Date.UTC(adjustedDate.getFullYear(), localDate.getMonth(), localDate.getDate()));
 
     const expenseData = {
       title: enteredTitle,
