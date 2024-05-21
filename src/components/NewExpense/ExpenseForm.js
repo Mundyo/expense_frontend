@@ -41,16 +41,11 @@ const ExpenseForm = (props) => {
     localDate.setDate(localDate.getDate() +1);
 
     const adjustedDateISOString = localDate.toISOString();
-  
-  //   const adjustedDate = new Date(localDate);
-  // adjustedDate.setDate(adjustedDate.getDate() + 2);
 
-  // const utcDate = new Date(Date.UTC(adjustedDate.getFullYear(), localDate.getMonth(), localDate.getDate()));
 
     const expenseData = {
       title: enteredTitle,
       amount: enteredAmount,
-      // date: new Date(enteredDate),
       date: adjustedDateISOString,
       user_id:  localStorage.getItem('user_id'),
     };
@@ -62,7 +57,6 @@ const ExpenseForm = (props) => {
 
       const response = await fetch('https://expense-backend-f7e811c7173d.herokuapp.com/account', {
 
-      // const response = await fetch('http://localhost:3001/account', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

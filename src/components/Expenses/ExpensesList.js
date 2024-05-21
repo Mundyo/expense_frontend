@@ -12,7 +12,7 @@ const ExpensesList = ({ userId, filteredYear, onDeleteExpense }) => {
   useEffect(() => {
     const fetchExpenses = async () => {
       try {
-        // const response = await fetch(`http://localhost:3001/account?user_id=${userId}`);
+        
         const response = await fetch(`https://expense-backend-f7e811c7173d.herokuapp.com/account?user_id=${userId}`);
        
         if (!response.ok) {
@@ -37,7 +37,6 @@ const ExpensesList = ({ userId, filteredYear, onDeleteExpense }) => {
     const handleDeleteExpense = async (expenseId) => {
       try {
         const response = await fetch(`https://expense-backend-f7e811c7173d.herokuapp.com/account/${expenseId}`, {
-        // const response = await fetch(`http://localhost:3001/account/${expenseId}`, {
           method: 'DELETE',
         });
   
